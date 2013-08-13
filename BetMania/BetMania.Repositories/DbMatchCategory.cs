@@ -71,7 +71,8 @@ namespace BetMania.Repositories
         public MatchCategory Get(int id)
         {
             var matchCat= this.entitySet.Find(id);
-            matchCat.Matchs = this.entityMatchSet.Where(x => x.Id == x.MatchCategory.Id);
+
+            matchCat.Matchs = this.entityMatchSet.Where(x => x.MatchCategory.Id == id);
             return matchCat;
         }
 
