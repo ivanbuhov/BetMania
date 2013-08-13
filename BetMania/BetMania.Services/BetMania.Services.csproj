@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Models\BetModel.cs" />
     <Compile Include="Models\MatchModel.cs" />
+    <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Models\UserMatchesModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
