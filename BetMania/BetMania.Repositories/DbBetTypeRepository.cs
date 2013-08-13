@@ -1,6 +1,7 @@
 ﻿using BetMania.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BetMania.Repositories
 {
-    public class DbBetTypeRepository :IRepository<BetType>
+    public class DbBetTypeRepository : IRepository<BetType>
     {
         private DbContext dbContext;
         private DbSet<BetType> entitySet;
@@ -36,7 +37,7 @@ namespace BetMania.Repositories
 
             if (entry.State == EntityState.Detached)
             {
-                User attachedEntity = this.entitySet.Find(entity.Id);
+                BetType attachedEntity = this.entitySet.Find(entity.Id);
                 if (attachedEntity != null)
                 {
                     var attachedEntry = this.dbContext.Entry(attachedEntity);
@@ -48,7 +49,7 @@ namespace BetMania.Repositories
                 }
             }
 
-            dbContextUsers.SaveChanges();
+            dbContext.SaveChanges();
 
             return entity;
         }

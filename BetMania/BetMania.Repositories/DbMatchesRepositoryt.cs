@@ -1,6 +1,7 @@
 ﻿using BetMania.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace BetMania.Repositories
 
             if (entry.State == EntityState.Detached)
             {
-                User attachedEntity = this.entitySet.Find(entity.Id);
+                Match attachedEntity = this.entitySet.Find(entity.Id);
                 if (attachedEntity != null)
                 {
                     var attachedEntry = this.dbContext.Entry(attachedEntity);
@@ -56,7 +57,7 @@ namespace BetMania.Repositories
                 }
             }
 
-            dbContextUsers.SaveChanges();
+            dbContext.SaveChanges();
 
             return entity;
         }
