@@ -9,5 +9,12 @@ namespace BetMania.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public virtual IEnumerable<Match> Matchs { get; set; }
+
+        public MatchCategory()
+        {
+            this.Matchs = new HashSet<Match>();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace BetMania.Services.Controllers
 {
@@ -128,6 +129,11 @@ namespace BetMania.Services.Controllers
             this.userRepository.Delete(id);
         }
 
+        //public void Get2(int id)
+        //{
+        //    var user = this.userRepository.All().Include(usr => usr.Bets.Select(b => b.Match));
+
+        //}
 
         //public void GetMatchesBets(int id)
         //{ 

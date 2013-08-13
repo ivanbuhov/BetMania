@@ -170,6 +170,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BetsController.cs" />
+    <Compile Include="Controllers\MatchsCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatchsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -179,7 +180,9 @@
     </Compile>
     <Compile Include="Models\BetMatchModel.cs" />
     <Compile Include="Models\BetModel.cs" />
+    <Compile Include="Models\MatchCategoryModelAll.cs" />
     <Compile Include="Models\MatchModel.cs" />
+    <Compile Include="Models\SingleMatchCatModel.cs" />
     <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Models\UserMatchesModel.cs" />
     <Compile Include="Models\UserModel.cs" />

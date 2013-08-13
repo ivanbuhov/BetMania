@@ -24,6 +24,9 @@ namespace BetMania.Services.Resolvers
         public static IRepository<Match> matchRepository =
             new DbMatchesRepository(betManiaContext);
 
+        public static IRepository<MatchCategory> matchCategoryRepository =
+           new DbMatchCategory(betManiaContext);
+
 
         public IDependencyScope BeginScope()
         {
@@ -45,6 +48,11 @@ namespace BetMania.Services.Resolvers
             if (serviceType == typeof(MatchsController))
             {
                 return new MatchsController(matchRepository);
+            }
+
+            if (serviceType == typeof(MatchsCategoryController))
+            {
+                return new MatchsCategoryController(matchCategoryRepository);
             }
 
             else
