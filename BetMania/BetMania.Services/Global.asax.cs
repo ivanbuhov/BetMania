@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BetMania.Services.Resolvers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,11 @@ namespace BetMania.Services
 
     public class WebApiApplication : System.Web.HttpApplication
     {
+        protected void ConfigureDependencyResolver(HttpConfiguration config)
+        {
+            config.DependencyResolver = new DbDependencyResolver();
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -22,6 +28,7 @@ namespace BetMania.Services
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            this.ConfigureDependencyResolver(GlobalConfiguration.Configuration);
         }
     }
 }

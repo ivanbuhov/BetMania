@@ -1,6 +1,7 @@
 ﻿using BetMania.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -37,9 +38,27 @@ namespace BetMania.Repositories
             {
                 throw new ArgumentNullException();
             }
- 
-            this.entitySetUser.Attach(entity);
-            this.dbContextUsers.Entry(entity).State = System.Data.EntityState.Modified;
+
+            var entry = this.dbContextUsers.Entry<User>(entity);
+
+            if (entry.State == EntityState.Detached)
+            {
+                //var set = _context.Set<T>();
+                User attachedEntity = this.entitySetUser.Find(entity.Id);  // You need to have access to key
+
+                if (attachedEntity != null)
+                {
+                    var attachedEntry = this.dbContextUsers.Entry(attachedEntity);
+                    attachedEntry.CurrentValues.SetValues(entity);
+                }
+                else
+                {
+                    entry.State = EntityState.Modified; // This should attach entity
+                }
+            }
+
+            //this.entitySetUser.Attach(entity);
+            //this.dbContextUsers.Entry(entity).State = System.Data.EntityState.Modified;
             dbContextUsers.SaveChanges();
 
             return entity;
@@ -47,14 +66,12 @@ namespace BetMania.Repositories
 
         public void Delete(int id)
         {
-            User deleteUser = new User
+            var entity = this.entitySetUser.Find(id);
+            if (entity != null)
             {
-                Id = id
-            };
-
-           this.entitySetUser.Attach(deleteUser);
-           this.entitySetUser.Remove(deleteUser);
-           this.dbContextUsers.SaveChanges();
+                this.entitySetUser.Remove(entity);
+                this.dbContextUsers.SaveChanges();
+            }
         }
 
         public User Get(int id)

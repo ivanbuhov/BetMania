@@ -161,11 +161,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolvers\DbDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -282,10 +285,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BetMania.Database\BetMania.Database.csproj">
+      <Project>{62aa82ee-25d7-4ad6-a979-abd5c9a7f8fa}</Project>
+      <Name>BetMania.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetMania.Models\BetMania.Models.csproj">
+      <Project>{543bc5a7-a0a6-4908-ba36-3c12b9e0e786}</Project>
+      <Name>BetMania.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetMania.Repositories\BetMania.Repositories.csproj">
+      <Project>{3816a09f-e1f4-490a-9ff5-88dd4f3ae4d4}</Project>
+      <Name>BetMania.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
