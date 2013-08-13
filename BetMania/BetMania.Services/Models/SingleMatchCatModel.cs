@@ -9,6 +9,6 @@ namespace BetMania.Services.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        IEnumerable<MatchModel> Matches { get; set; }
+        public IEnumerable<MatchModel> Matches { get; set; }
     }
 }

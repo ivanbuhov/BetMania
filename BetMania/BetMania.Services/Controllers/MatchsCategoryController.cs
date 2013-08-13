@@ -37,7 +37,7 @@ namespace BetMania.Services.Controllers
         }
 
         // GET api/category/5
-        public SingleMatchCatModel Get(int id)
+        public MatchCategory Get(int id)
         {
          //    var user = this.userRepository.All().Include(usr => usr.Bets.Select(b => b.Match));
             var matchCat  = this.matchRepository.Get(id);
@@ -62,14 +62,15 @@ namespace BetMania.Services.Controllers
                   );
 	        };
 
-            IList<MatchModel> newMatchCol = new List<MatchModel>();
-            new SingleMatchCatModel
+           // IList<MatchModel> newMatchCol = new List<MatchModel>();
+           SingleMatchCatModel matchCatModel =  new SingleMatchCatModel
             {
                 Id = matchCat.Id,
-                Name = matchCat.Name,  
+                Name = matchCat.Name,
                 Matches = matchesInCat
-            }
-            return matchCat;
+            };
+
+            return this.matchRepository.Get(id);
         }
 
         // POST api/category
