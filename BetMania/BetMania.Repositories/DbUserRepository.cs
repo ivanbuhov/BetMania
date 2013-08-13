@@ -13,6 +13,8 @@ namespace BetMania.Repositories
     {
         private DbContext dbContextUsers;
         private DbSet<User> entitySetUser;
+        private DbSet<Bet> entitySetBet;
+        private DbSet<Match> entitySetMatch;
 
         public DbUserRepository(DbContext dbContext)
         {
@@ -23,6 +25,8 @@ namespace BetMania.Repositories
 
             this.dbContextUsers = dbContext;
             this.entitySetUser = this.dbContextUsers.Set<User>();
+            this.entitySetBet = this.dbContextUsers.Set<Bet>();
+            this.entitySetMatch = this.dbContextUsers.Set<Match>();
         }
 
         public User Add(User entity)
@@ -86,8 +90,16 @@ namespace BetMania.Repositories
 
         public User Info(int id)
         {
-          return this.entitySetUser.Where(x => x.Id == id).Include("Bets").
-                Include("Bets.Match").First();
+          var user = this.entitySetUser.Find(id);
+          user.Bets = this.entitySetBet.Where(x => x.User.Id == user.Id);
+
+          foreach (var userBet in user.Bets)
+	     {
+             userBet.Match = this.entitySetMatch.FirstOrDefault(x => x.Id == userBet.Match.Id);
+	      } 
+         
+
+          return user;
         }
 
     }

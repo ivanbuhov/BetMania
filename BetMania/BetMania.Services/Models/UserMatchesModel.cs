@@ -10,7 +10,10 @@ namespace BetMania.Services.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public string Avatar { get; set; }
+        public decimal? Balance { get; set; }
 
-        public IEnumerable<Match> Matches { get; set; }
+        public IEnumerable<MatchModel> Matches { get; set; }
+        public IEnumerable<BetModel> Bets { get; set; }
     }
 }

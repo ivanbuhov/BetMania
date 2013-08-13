@@ -25,43 +25,60 @@ namespace BetMania.Services.Controllers
 
         public IEnumerable<UserModel> Get()
         {
-             var users =  this.userRepository.All();
+            var users = this.userRepository.All();
 
-             var userModel = from userEntity in users
-                             select new UserModel
-                             {
-                                 Id = userEntity.Id,
-                                 Username = userEntity.Username,
-                                 Avatatr = userEntity.Avatar,
-                                 Balance = userEntity.Balance
-                             };
+            var userModel = from userEntity in users
+                            select new UserModel
+                            {
+                                Id = userEntity.Id,
+                                Username = userEntity.Username,
+                                Avatatr = userEntity.Avatar,
+                                Balance = userEntity.Balance
+                            };
             return userModel;
         }
 
         // GET api/user/5
-        public UserModel Get(int id)
+        public UserMatchesModel Get(int id)
         {
             var user = this.userRepository.Info(id);
-            IEnumerable<MatchModel> colMatchModel = new List<MatchModel>();
+            List<MatchModel> colMatchModel = new List<MatchModel>();
+            List<BetModel> colBetModel = new List<BetModel>();
 
-            //foreach (var item in user.Bets)
-            //{
-            //    item.m
-            //}
-            //foreach (var item in collection)
-            //{
-                
-            //}
+            foreach (var bet in user.Bets)
+            {
+               colBetModel.Add(new BetModel 
+                {
+                    MakeBet = bet.MakeBet
+                }
+                );
+               colMatchModel.Add(new MatchModel
+                   {
+                       Id = bet.Match.Id,
+                       Home = bet.Match.Home,
+                       Away = bet.Match.Away,
+                       HomeScore = bet.Match.HomeScore,
+                       AwayScore = bet.Match.AwayScore,
+                       HomeCoefficient = bet.Match.HomeCoefficient,
+                       AwayCoefficient = bet.Match.AwayCoefficient,
+                       DrawCoefficient = bet.Match.DrawCoefficient,
+                       StartTime = bet.Match.StartTime,
+                       IsFinished = bet.Match.IsFinished
+                   });
+            }
+          
 
-            var userModel =  new UserModel
+            var userModel =  new UserMatchesModel
                             {
                                 Id = user.Id,
                                 Username = user.Username,
-                                Avatatr = user.Avatar,
+                                Avatar = user.Avatar,
                                 Balance = user.Balance,
-   
+                                Matches = colMatchModel,
+                                Bets = colBetModel
                             };
 
+                    
             return userModel;
         }
 
@@ -96,10 +113,10 @@ namespace BetMania.Services.Controllers
             this.userRepository.Delete(id);
         }
 
-       
+
         //public void GetMatchesBets(int id)
         //{ 
-            
+
         //}
     }
 }
