@@ -177,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BetMatchModel.cs" />
     <Compile Include="Models\BetModel.cs" />
     <Compile Include="Models\MatchModel.cs" />
     <Compile Include="Models\UserInfoModel.cs" />

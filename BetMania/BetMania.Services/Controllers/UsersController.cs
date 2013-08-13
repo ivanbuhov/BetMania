@@ -42,17 +42,15 @@ namespace BetMania.Services.Controllers
         public UserMatchesModel Get(int id)
         {
             var user = this.userRepository.Info(id);
-            List<MatchModel> colMatchModel = new List<MatchModel>();
-            List<BetModel> colBetModel = new List<BetModel>();
+            //List<MatchModel> colMatchModel = new List<MatchModel>();
+            List<BetMatchModel> colBetModel = new List<BetMatchModel>();
 
             foreach (var bet in user.Bets)
             {
-               colBetModel.Add(new BetModel 
+               colBetModel.Add(new BetMatchModel
                 {
-                    MakeBet = bet.MakeBet
-                }
-                );
-               colMatchModel.Add(new MatchModel
+                    MakeBet = bet.MakeBet,
+                    Match = new MatchModel
                    {
                        Id = bet.Match.Id,
                        Home = bet.Match.Home,
@@ -64,17 +62,34 @@ namespace BetMania.Services.Controllers
                        DrawCoefficient = bet.Match.DrawCoefficient,
                        StartTime = bet.Match.StartTime,
                        IsFinished = bet.Match.IsFinished
-                   });
+                   }
+                }
+              );
             }
-          
 
-            var userModel =  new UserMatchesModel
+            //    colMatchModel.Add(new MatchModel
+            //       {
+            //           Id = bet.Match.Id,
+            //           Home = bet.Match.Home,
+            //           Away = bet.Match.Away,
+            //           HomeScore = bet.Match.HomeScore,
+            //           AwayScore = bet.Match.AwayScore,
+            //           HomeCoefficient = bet.Match.HomeCoefficient,
+            //           AwayCoefficient = bet.Match.AwayCoefficient,
+            //           DrawCoefficient = bet.Match.DrawCoefficient,
+            //           StartTime = bet.Match.StartTime,
+            //           IsFinished = bet.Match.IsFinished
+            //       });
+            //}
+
+
+            var userModel = new UserMatchesModel
                             {
                                 Id = user.Id,
                                 Username = user.Username,
                                 Avatar = user.Avatar,
                                 Balance = user.Balance,
-                                Matches = colMatchModel,
+                               // Matches = colMatchModel,
                                 Bets = colBetModel
                             };
 
