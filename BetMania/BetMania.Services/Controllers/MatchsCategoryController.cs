@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
+using BetMania.Database;
 
 namespace BetMania.Services.Controllers
 {
@@ -23,54 +24,80 @@ namespace BetMania.Services.Controllers
         // GET api/category
         public IEnumerable<MatchCategoryModelAll> Get()
         {
-          var matchCat = this.matchRepository.All();
+            var matchCat = this.matchRepository.All();
 
-          var matchCatModel = from matchCatEntity in matchCat
-                              select new MatchCategoryModelAll
-                              {
-                                Id = matchCatEntity.Id,
-                                Name = matchCatEntity.Name
-                              };
+            var matchCatModel = from matchCatEntity in matchCat
+                                select new MatchCategoryModelAll
+                                {
+                                    Id = matchCatEntity.Id,
+                                    Name = matchCatEntity.Name
+                                };
 
-        return matchCatModel;
-          
+            return matchCatModel;
+
         }
 
         // GET api/category/5
-        public MatchCategory Get(int id)
+        //public MatchCategory Get(int id)
+        //{
+        // //    var user = this.userRepository.All().Include(usr => usr.Bets.Select(b => b.Match));
+        //    var matchCat  = this.matchRepository.Get(id);
+        //    List<MatchModel> matchesInCat = new List<MatchModel>();
+
+        //    foreach (var match in matchCat.Matchs)
+        //    {
+        //      matchesInCat.Add(
+        //            new MatchModel
+        //            {
+        //               Id = match.Id,
+        //               Home = match.Home,
+        //               Away = match.Away,
+        //               HomeScore = match.HomeScore,
+        //               AwayScore = match.AwayScore,
+        //               HomeCoefficient = match.HomeCoefficient,
+        //               AwayCoefficient = match.AwayCoefficient,
+        //               DrawCoefficient = match.DrawCoefficient,
+        //               StartTime = match.StartTime,
+        //               IsFinished = match.IsFinished
+        //            }
+        //          );
+        //    };
+
+        //   // IList<MatchModel> newMatchCol = new List<MatchModel>();
+        //   SingleMatchCatModel matchCatModel =  new SingleMatchCatModel
+        //    {
+        //        Id = matchCat.Id,
+        //        Name = matchCat.Name,
+        //        Matches = matchesInCat
+        //    };
+
+        //    return this.matchRepository.Get(id);
+        //}
+
+        public SingleMatchCatModel Get(int id)
         {
-         //    var user = this.userRepository.All().Include(usr => usr.Bets.Select(b => b.Match));
-            var matchCat  = this.matchRepository.Get(id);
-            List<MatchModel> matchesInCat = new List<MatchModel>();
-
-            foreach (var match in matchCat.Matchs)
-	        {
-		      matchesInCat.Add(
-                    new MatchModel
-                    {
-                       Id = match.Id,
-                       Home = match.Home,
-                       Away = match.Away,
-                       HomeScore = match.HomeScore,
-                       AwayScore = match.AwayScore,
-                       HomeCoefficient = match.HomeCoefficient,
-                       AwayCoefficient = match.AwayCoefficient,
-                       DrawCoefficient = match.DrawCoefficient,
-                       StartTime = match.StartTime,
-                       IsFinished = match.IsFinished
-                    }
-                  );
-	        };
-
-           // IList<MatchModel> newMatchCol = new List<MatchModel>();
-           SingleMatchCatModel matchCatModel =  new SingleMatchCatModel
+            var matchCat = this.matchRepository.Get(id);
+            var categoryModel = new SingleMatchCatModel()
             {
                 Id = matchCat.Id,
                 Name = matchCat.Name,
-                Matches = matchesInCat
+                Matches = (from match in matchCat.Matchs
+                           select new MatchModel()
+                           {
+                               Id = match.Id,
+                               Home = match.Home,
+                               Away = match.Away,
+                               HomeScore = match.HomeScore,
+                               AwayScore = match.AwayScore,
+                               HomeCoefficient = match.HomeCoefficient,
+                               AwayCoefficient = match.AwayCoefficient,
+                               DrawCoefficient = match.DrawCoefficient,
+                               StartTime = match.StartTime,
+                               IsFinished = match.IsFinished
+                           })
             };
+            return categoryModel;
 
-            return this.matchRepository.Get(id);
         }
 
         // POST api/category

@@ -1,0 +1,1 @@
+Server=bed170a6-f6c4-4871-a398-a21a00c14e28.sqlserver.sequelizer.com;Database=dbbed170a6f6c44871a398a21a00c14e28;User ID=eiwelpphdlkdhymn;Password=sdNrLABjytyezh284awFhFUgjGCXEndPwxZBUqLR2SSfmFZaJznqH6yTqGge7LLm;

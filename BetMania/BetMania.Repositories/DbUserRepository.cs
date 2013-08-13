@@ -92,7 +92,7 @@ namespace BetMania.Repositories
         {
           var user = this.entitySetUser.Find(id);
           user.Bets = this.entitySetBet.Where(x => x.User.Id == user.Id);
-
+           
           foreach (var userBet in user.Bets)
 	     {
              userBet.Match = this.entitySetMatch.FirstOrDefault(x => x.Id == userBet.Match.Id);

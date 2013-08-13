@@ -1,4 +1,5 @@
-﻿using BetMania.Models;
+﻿using BetMania.Database;
+using BetMania.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,11 +14,13 @@ namespace BetMania.Repositories
     {
         private DbContext dbContext;
         private DbSet<MatchCategory> entitySet;
+        private DbSet<Match> entityMatchSet;
 
         public DbMatchCategory(DbContext dbContext)
         {
             this.dbContext = dbContext;
             this.entitySet = this.dbContext.Set<MatchCategory>();
+            this.entityMatchSet = this.dbContext.Set<Match>();
         }
 
         public MatchCategory Add(MatchCategory entity)
@@ -67,7 +70,9 @@ namespace BetMania.Repositories
 
         public MatchCategory Get(int id)
         {
-            return this.entitySet.Find(id);
+            var matchCat= this.entitySet.Find(id);
+            matchCat.Matchs = this.entityMatchSet.Where(x => x.Id == x.MatchCategory.Id);
+            return matchCat;
         }
 
         public IQueryable<MatchCategory> All()
