@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BetMania.Database
+namespace BetMania.Models
 {
-    class UserRole
+    public class MatchCategory
     {
         public int Id { get; set; }
         public string Name { get; set; }

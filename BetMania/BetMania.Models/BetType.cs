@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BetMania.Database
+namespace BetMania.Models
 {
     public class BetType
     {

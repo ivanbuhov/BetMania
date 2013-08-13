@@ -4,19 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BetMania.Database
+namespace BetMania.Models
 {
     public class Bet
     {
         public int Id { get; set; }
-        public decimal Bet { get; set; }
+        public decimal MakeBet { get; set; }
         
         // Navigation Properties
-        public int UserId { get; set; }
         public virtual User User { get; set; }
-        public int MatchId { get; set; }
         public virtual Match Match { get; set; }
-        public int BetTypeId { get; set; }
         public virtual BetType BetType { get; set; }
     }
 }

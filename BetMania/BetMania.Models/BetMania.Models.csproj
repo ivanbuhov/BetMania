@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3816A09F-E1F4-490A-9FF5-88DD4F3AE4D4}</ProjectGuid>
+    <ProjectGuid>{543BC5A7-A0A6-4908-BA36-3C12B9E0E786}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetMania.Repositories</RootNamespace>
-    <AssemblyName>BetMania.Repositories</AssemblyName>
+    <RootNamespace>BetMania.Models</RootNamespace>
+    <AssemblyName>BetMania.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,28 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbBetRepository.cs" />
-    <Compile Include="DbBetTypeRepository.cs" />
-    <Compile Include="DbMatchCategory.cs" />
-    <Compile Include="DbMatchesRepositoryt.cs" />
-    <Compile Include="DbUserRoleRepository.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="Bet.cs" />
+    <Compile Include="BetType.cs" />
+    <Compile Include="Match.cs" />
+    <Compile Include="MatchCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DbUserRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BetMania.Database\BetMania.Database.csproj">
-      <Project>{62aa82ee-25d7-4ad6-a979-abd5c9a7f8fa}</Project>
-      <Name>BetMania.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BetMania.Models\BetMania.Models.csproj">
-      <Project>{543bc5a7-a0a6-4908-ba36-3c12b9e0e786}</Project>
-      <Name>BetMania.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserRole.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

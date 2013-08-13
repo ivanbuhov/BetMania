@@ -44,18 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bet.cs" />
     <Compile Include="BetManiaContext.cs" />
-    <Compile Include="BetType.cs" />
-    <Compile Include="Match.cs" />
-    <Compile Include="MatchCategory.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BetMania.Models\BetMania.Models.csproj">
+      <Project>{543bc5a7-a0a6-4908-ba36-3c12b9e0e786}</Project>
+      <Name>BetMania.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,10 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BetMania.Database
+namespace BetMania.Models
 {
     public class Match
     {
+        public IEnumerable<User> users;
+
+        public Match()
+        {
+            this.users = new HashSet<User>(); 
+        }
+
         public int Id { get; set; }
         public string Home { get; set; }
         public string Away { get; set; }

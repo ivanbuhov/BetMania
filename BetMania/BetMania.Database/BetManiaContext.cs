@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using BetMania.Models;
 
 namespace BetMania.Database
 {
@@ -13,10 +14,10 @@ namespace BetMania.Database
             : base("BetManiaDb") { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Match> Users { get; set; }
-        public DbSet<MatchCategory> Users { get; set; }
-        public DbSet<Bet> Users { get; set; }
-        public DbSet<BetType> Users { get; set; }
-        public DbSet<UserRole> Users { get; set; }
+        public DbSet<Match> Matchs { get; set; }
+        public DbSet<MatchCategory> MatchCategories { get; set; }
+        public DbSet<Bet> Bets { get; set; }
+        public DbSet<BetType> BetTypes { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
     }
 }
