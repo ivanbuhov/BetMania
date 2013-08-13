@@ -33,23 +33,44 @@ namespace BetMania.Repositories
             {
                 throw new ArgumentNullException();
             }
+            var entry = this.dbContext.Entry<Bet>(entity);
 
-            this.entitySet.Attach(entity);
-            this.dbContext.Entry(entity).State = System.Data.EntityState.Modified;
-            this.dbContext.SaveChanges();
+            if (entry.State == EntityState.Detached)
+            {
+                User attachedEntity = this.entitySet.Find(entity.Id);
+                if (attachedEntity != null)
+                {
+                    var attachedEntry = this.dbContext.Entry(attachedEntity);
+                    attachedEntry.CurrentValues.SetValues(entity);
+                }
+                else
+                {
+                    entry.State = EntityState.Modified;
+                }
+            }
+
+            dbContextUsers.SaveChanges();
+
             return entity;
         }
 
         public void Delete(int id)
         {
-            Bet deleteUser = new Bet
-             {
-                 Id = id
-             };
+            //Bet deleteUser = new Bet
+            // {
+            //     Id = id
+            // };
 
-            this.entitySet.Attach(deleteUser);
-            this.entitySet.Remove(deleteUser);
-            this.dbContext.SaveChanges();
+            //this.entitySet.Attach(deleteUser);
+            //this.entitySet.Remove(deleteUser);
+            //this.dbContext.SaveChanges();
+
+            var entity = this.entitySet.Find(id);
+            if (entity != null)
+            {
+                this.entitySet.Remove(entity);
+                this.dbContext.SaveChanges();
+            }
         }
 
         public Bet Get(int id)

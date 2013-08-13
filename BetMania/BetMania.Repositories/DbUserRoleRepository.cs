@@ -28,27 +28,41 @@ namespace BetMania.Repositories
 
         public UserRole Update(UserRole entity)
         {
+
             if (entity == null)
             {
                 throw new ArgumentNullException();
             }
 
-            this.entitySet.Attach(entity);
-            this.dbContext.Entry(entity).State = System.Data.EntityState.Modified;
-            this.dbContext.SaveChanges();
+            var entry = this.dbContextUsers.Entry<UserRole>(entity);
+
+            if (entry.State == EntityState.Detached)
+            {
+                User attachedEntity = this.entitySetUser.Find(entity.Id);
+                if (attachedEntity != null)
+                {
+                    var attachedEntry = this.dbContextUsers.Entry(attachedEntity);
+                    attachedEntry.CurrentValues.SetValues(entity);
+                }
+                else
+                {
+                    entry.State = EntityState.Modified;
+                }
+            }
+
+            dbContextUsers.SaveChanges();
+
             return entity;
         }
 
         public void Delete(int id)
         {
-            UserRole deleteUser = new UserRole
+            var entity = this.entitySet.Find(id);
+            if (entity != null)
             {
-                Id = id
-            };
-
-            this.entitySet.Attach(deleteUser);
-            this.entitySet.Remove(deleteUser);
-            this.dbContext.SaveChanges();
+                this.entitySet.Remove(entity);
+                this.dbContext.SaveChanges();
+            }
         }
 
         public UserRole Get(int id)
