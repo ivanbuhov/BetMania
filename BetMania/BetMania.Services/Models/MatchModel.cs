@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BetMania.Models
+namespace BetMania.Services.Models
 {
-    public class Match
+    public class MatchModel
     {
-        public IEnumerable<Bet> bets;
-
-        public Match()
-        {
-            this.bets = new HashSet<Bet>(); 
-        }
-
         public int Id { get; set; }
         public string Home { get; set; }
         public string Away { get; set; }
@@ -25,9 +17,5 @@ namespace BetMania.Models
         public double? DrawCoefficient { get; set; }
         public DateTime StartTime { get; set; }
         public bool IsFinished { get; set; }
-
-        // Navigation Properties
-
-        public virtual MatchCategory MatchCategory { get; set; }
     }
 }

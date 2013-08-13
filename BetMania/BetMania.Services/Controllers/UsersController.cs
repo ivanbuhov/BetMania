@@ -10,15 +10,16 @@ using System.Web.Http;
 
 namespace BetMania.Services.Controllers
 {
-    public class UserController : ApiController
+    public class UsersController : ApiController
     {
-        private IRepository<User> userRepository;
+        private DbUserRepository userRepository;
         // GET api/user
 
-        public UserController(IRepository<User> userRep)
+        public UsersController(DbUserRepository userRep)
         {
             this.userRepository = userRep;
         }
+
 
         public IEnumerable<UserModel> Get()
         {
@@ -36,9 +37,30 @@ namespace BetMania.Services.Controllers
         }
 
         // GET api/user/5
-        public User Get(int id)
+        public UserModel Get(int id)
         {
-            return this.userRepository.Get(id);
+            var user = this.userRepository.Info(id);
+            IEnumerable<MatchModel> colMatchModel = new List<MatchModel>();
+
+            //foreach (var item in user.Bets)
+            //{
+            //    item.m
+            //}
+            //foreach (var item in collection)
+            //{
+                
+            //}
+
+            var userModel =  new UserModel
+                            {
+                                Id = user.Id,
+                                Username = user.Username,
+                                Avatatr = user.Avatatr,
+                                Balance = user.Balance,
+   
+                            };
+
+            return userModel;
         }
 
         // POST api/user
@@ -66,5 +88,11 @@ namespace BetMania.Services.Controllers
         {
             this.userRepository.Delete(id);
         }
+
+       
+        //public void GetMatchesBets(int id)
+        //{ 
+            
+        //}
     }
 }
