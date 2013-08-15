@@ -257,6 +257,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="OAuthTokenFileName.txt" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -307,6 +308,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BetMania.AvatarUploader\BetMania.AvatarUploader.csproj">
+      <Project>{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}</Project>
+      <Name>BetMania.AvatarUploader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BetMania.Database\BetMania.Database.csproj">
       <Project>{62aa82ee-25d7-4ad6-a979-abd5c9a7f8fa}</Project>
       <Name>BetMania.Database</Name>
