@@ -8,11 +8,11 @@ namespace BetMania.Models
 {
     public class User
     {
-        public IEnumerable<Match> matches;
+        public virtual IEnumerable<Bet> Bets {get; set;}
 
         public User()
         {
-            this.matches = new HashSet<Match>();
+            this.Bets = new HashSet<Bet>();
         }
 
         public int Id { get; set; }

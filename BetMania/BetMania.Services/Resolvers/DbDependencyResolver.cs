@@ -15,8 +15,14 @@ namespace BetMania.Services.Resolvers
     {
         private static DbContext betManiaContext = new BetManiaContext();
 
-        public static IRepository<User> userRepository = 
+        public static DbUserRepository userRepository = 
             new DbUserRepository(betManiaContext);
+
+        public static IRepository<Bet> betRepository =
+           new DbBetRepository(betManiaContext);
+
+        public static IRepository<Match> matchRepository =
+            new DbMatchesRepository(betManiaContext);
 
 
         public IDependencyScope BeginScope()
@@ -26,10 +32,21 @@ namespace BetMania.Services.Resolvers
 
         public object GetService(Type serviceType)
         {
-            if (serviceType == typeof(UserController))
+            if (serviceType == typeof(UsersController))
             {
-                return new UserController(userRepository);
+                return new UsersController(userRepository);
             }
+
+            if (serviceType == typeof(BetsController))
+            {
+                return new BetsController(betRepository);
+            }
+
+            if (serviceType == typeof(MatchsController))
+            {
+                return new MatchsController(matchRepository);
+            }
+
             else
             {
                 return null;

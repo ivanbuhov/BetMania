@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace BetMania.Repositories
 {
-    public class DbMatchesRepositoryt : IRepository<Match>
+    public class DbMatchesRepository : IRepository<Match>
     {
 
         private DbContext dbContext;
         private DbSet<Match> entitySet;
 
-        public DbMatchesRepositoryt(DbContext dbContex)
+        public DbMatchesRepository(DbContext dbContext)
         {
             if (dbContext == null)
             {
                 throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
             }
 
-            this.dbContext = dbContex;
+            this.dbContext = dbContext;
             this.entitySet = this.dbContext.Set<Match>();
         }
 

@@ -16,7 +16,7 @@ namespace BetMania.Repositories
 
         public DbUserRepository(DbContext dbContext)
         {
-             if (dbContext == null)
+            if (dbContext == null)
             {
                 throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
             }
@@ -83,5 +83,12 @@ namespace BetMania.Repositories
         {
             return this.entitySetUser;
         }
+
+        public User Info(int id)
+        {
+          return this.entitySetUser.Where(x => x.Id == id).Include("Bets").
+                Include("Bets.Match").First();
+        }
+
     }
 }

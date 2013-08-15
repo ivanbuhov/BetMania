@@ -10,11 +10,11 @@ using System.Web.Http;
 
 namespace BetMania.Services.Controllers
 {
-    public class BetController : ApiController
+    public class BetsController : ApiController
     {
         private IRepository<Bet> betRepository;
 
-        public BetController(IRepository<Bet> betRep)
+        public BetsController(IRepository<Bet> betRep)
         {
             this.betRepository = betRep;
         }
@@ -25,21 +25,31 @@ namespace BetMania.Services.Controllers
             var bets = this.betRepository.All();
 
             var betModel = from betEntity in bets
-                            select new BetModel
-                            {
-                                 Id = betEntity.Id,
-                                 MakeBet = betEntity.MakeBet,
-                                 BetType = betEntity.BetType,
-                                 Match = betEntity.Match,
-                                 User = betEntity.User
-                            };
+                           select new BetModel
+                           {
+                               Id = betEntity.Id,
+                               MakeBet = betEntity.MakeBet,
+                               BetType = betEntity.BetType,
+                               Match = betEntity.Match,
+                               User = betEntity.User
+                           };
             return betModel;
         }
 
         // GET api/bet/5
-        public Bet Get(int id)
+        public BetModel Get(int id)
         {
-            return this.betRepository.Get(id);
+            var bet = this.betRepository.Get(id);
+
+            var betModel =  new BetModel
+                            {
+                                 Id = bet.Id,
+                                 MakeBet = bet.MakeBet,
+                                 BetType = bet.BetType,
+                                 Match = bet.Match,
+                                 User = bet.User
+                            };
+            return betModel;
         }
 
         // POST api/bet
@@ -64,7 +74,7 @@ namespace BetMania.Services.Controllers
 
         // DELETE api/bet/5
         public void Delete(int id)
-        {   
+        {
             this.betRepository.Delete(id);
         }
     }
