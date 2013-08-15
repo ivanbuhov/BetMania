@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace NotificationsTest
 {
+    using System.IO;
+
     class Program
     {
         static void Main(string[] args)
@@ -18,7 +20,8 @@ namespace NotificationsTest
             AvatarUploader avatarUploder = new AvatarUploader();
 
             string pathOfTheAvatar = AvatarUploader.Upload("baiGanio", @"C:\google.jpeg");
-            Notifications.Publish(pathOfTheAvatar);
+            //Notifications.Publish(pathOfTheAvatar);
+            Console.WriteLine(pathOfTheAvatar);
         }
     }
 }
