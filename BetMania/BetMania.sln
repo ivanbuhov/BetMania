@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetMania.Models", "BetMania
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetMania.AvatarUploader", "BetMania.AvatarUploader\BetMania.AvatarUploader.csproj", "{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetMania.Notifier", "BetMania.Notifier\BetMania.Notifier.csproj", "{6574DCD8-C809-4C5A-9266-5C248F75FFFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsTest", "NotificationsTest\NotificationsTest.csproj", "{553EBAD6-FBDF-4675-BB5F-63E2F271390D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6574DCD8-C809-4C5A-9266-5C248F75FFFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6574DCD8-C809-4C5A-9266-5C248F75FFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6574DCD8-C809-4C5A-9266-5C248F75FFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6574DCD8-C809-4C5A-9266-5C248F75FFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553EBAD6-FBDF-4675-BB5F-63E2F271390D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553EBAD6-FBDF-4675-BB5F-63E2F271390D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553EBAD6-FBDF-4675-BB5F-63E2F271390D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553EBAD6-FBDF-4675-BB5F-63E2F271390D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
