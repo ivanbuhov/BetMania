@@ -10,6 +10,8 @@ using System.Web.Http;
 
 namespace BetMania.Services.Controllers
 {
+    using BetMania.AvatarUploader;
+
     public class UsersController : ApiController
     {
         private DbUserRepository userRepository;
@@ -30,7 +32,7 @@ namespace BetMania.Services.Controllers
                              {
                                  Id = userEntity.Id,
                                  Username = userEntity.Username,
-                                 Avatatr = userEntity.Avatatr,
+                                 Avatatr = userEntity.Avatar,
                                  Balance = userEntity.Balance
                              };
             return userModel;
@@ -55,7 +57,7 @@ namespace BetMania.Services.Controllers
                             {
                                 Id = user.Id,
                                 Username = user.Username,
-                                Avatatr = user.Avatatr,
+                                Avatatr = user.Avatar,
                                 Balance = user.Balance,
    
                             };
@@ -66,6 +68,11 @@ namespace BetMania.Services.Controllers
         // POST api/user
         public User Post(User value)
         {
+            // Upload image from the user's hard driver to the BetMania's account on Dropbox
+            // and save the url of the avatar from the Dropbox account to the database
+            var dropboxUrl = AvatarUploader.Upload(value.Username, value.Avatar);
+            value.Avatar = dropboxUrl;
+
             return this.userRepository.Add(value);
         }
 

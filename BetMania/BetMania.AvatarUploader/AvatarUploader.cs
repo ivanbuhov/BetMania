@@ -17,7 +17,7 @@ namespace BetMania.AvatarUploader
         private const string DropboxAppKey = "babqx6idqfu1i71";
         private const string DropboxAppSecret = "5h7t7v5gkqmxj4k";
 
-        private const string OAuthTokenFileName = "OAuthTokenFileName.txt";
+        private const string OAuthTokenFileName = "../../OAuthTokenFileName.txt";
 
         public static string Upload(string username, string path)
         {

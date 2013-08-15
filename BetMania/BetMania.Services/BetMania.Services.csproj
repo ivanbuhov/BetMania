@@ -40,6 +40,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spring.Rest">
+      <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Social.Core">
+      <HintPath>..\packages\Spring.Social.Core.1.0.1\lib\net40-client\Spring.Social.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Social.Dropbox">
+      <HintPath>..\packages\Spring.Social.Dropbox.1.2.0\lib\net40-client\Spring.Social.Dropbox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -176,6 +185,9 @@
     <Compile Include="Resolvers\DbDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Spring.Rest.txt" />
+    <Content Include="App_Readme\Spring.Social.Core.txt" />
+    <Content Include="App_Readme\Spring.Social.Dropbox.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

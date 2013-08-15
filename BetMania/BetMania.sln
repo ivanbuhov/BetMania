@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetMania.DTOModels", "BetMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetMania.Models", "BetMania.Models\BetMania.Models.csproj", "{543BC5A7-A0A6-4908-BA36-3C12B9E0E786}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetMania.AvatarUploader", "BetMania.AvatarUploader\BetMania.AvatarUploader.csproj", "{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{543BC5A7-A0A6-4908-BA36-3C12B9E0E786}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{543BC5A7-A0A6-4908-BA36-3C12B9E0E786}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{543BC5A7-A0A6-4908-BA36-3C12B9E0E786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD0CFA1-2B6C-49C0-ADA3-9E6F1C94EB7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

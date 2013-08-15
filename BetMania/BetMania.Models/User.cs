@@ -17,7 +17,7 @@ namespace BetMania.Models
 
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Avatatr { get; set; }
+        public string Avatar { get; set; }
         public decimal? Balance { get; set; }
 
         public virtual UserRole UserRole { get; set; } 
