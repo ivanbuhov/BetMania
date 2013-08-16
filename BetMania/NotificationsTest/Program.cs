@@ -19,7 +19,7 @@ namespace NotificationsTest
             Notifications.Publish("Test");
             AvatarUploader avatarUploder = new AvatarUploader();
 
-            string pathOfTheAvatar = AvatarUploader.Upload("baiGanio", @"C:\google.jpeg");
+            string pathOfTheAvatar = AvatarUploader.Upload("Sasho", @"C:\google.jpeg");
             //Notifications.Publish(pathOfTheAvatar);
             Console.WriteLine(pathOfTheAvatar);
         }
