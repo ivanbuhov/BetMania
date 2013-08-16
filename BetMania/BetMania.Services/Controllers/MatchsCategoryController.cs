@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
 using BetMania.Database;
+using Newtonsoft.Json;
+using BetMania.Notifier;
 
 namespace BetMania.Services.Controllers
 {
@@ -103,6 +105,9 @@ namespace BetMania.Services.Controllers
         // POST api/category
         public void Post(MatchCategory value)
         {
+            string jsonValue = JsonConvert.SerializeObject(value);
+            Notifications.Publish(jsonValue);
+
             this.matchRepository.Add(value);
         }
 
@@ -115,6 +120,9 @@ namespace BetMania.Services.Controllers
                 {
                     throw new ArgumentException("Not match Cat with such id");
                 }
+
+                string jsonValue = JsonConvert.SerializeObject(value);
+                Notifications.Publish(jsonValue);
 
                 this.matchRepository.Update(value);
             }

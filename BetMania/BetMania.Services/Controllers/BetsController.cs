@@ -1,6 +1,8 @@
 ﻿using BetMania.Models;
+using BetMania.Notifier;
 using BetMania.Repositories;
 using BetMania.Services.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +57,9 @@ namespace BetMania.Services.Controllers
         // POST api/bet
         public Bet Post(Bet value)
         {
+            string jsonValue = JsonConvert.SerializeObject(value);
+            Notifications.Publish(jsonValue);
+
             return this.betRepository.Add(value);
         }
 
@@ -67,6 +72,9 @@ namespace BetMania.Services.Controllers
                 {
                     throw new ArgumentException("Not user with such id");
                 }
+
+                string jsonValue = JsonConvert.SerializeObject(value);
+                Notifications.Publish(jsonValue);
 
                 this.betRepository.Update(value);
             }

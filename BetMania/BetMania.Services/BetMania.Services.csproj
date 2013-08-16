@@ -335,6 +335,10 @@
       <Project>{543bc5a7-a0a6-4908-ba36-3c12b9e0e786}</Project>
       <Name>BetMania.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BetMania.Notifier\BetMania.Notifier.csproj">
+      <Project>{6574dcd8-c809-4c5a-9266-5c248f75fffe}</Project>
+      <Name>BetMania.Notifier</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BetMania.Repositories\BetMania.Repositories.csproj">
       <Project>{3816a09f-e1f4-490a-9ff5-88dd4f3ae4d4}</Project>
       <Name>BetMania.Repositories</Name>

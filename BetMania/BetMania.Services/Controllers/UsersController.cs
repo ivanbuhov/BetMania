@@ -8,10 +8,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
+using Newtonsoft.Json.Serialization;
 
 namespace BetMania.Services.Controllers
 {
     using BetMania.AvatarUploader;
+    using Newtonsoft.Json;
+    using BetMania.Notifier;
 
     public class UsersController : ApiController
     {
@@ -106,6 +109,9 @@ namespace BetMania.Services.Controllers
             var dropboxUrl = AvatarUploader.Upload(value.Username, value.Avatar);
             value.Avatar = dropboxUrl;
 
+            string jsonValue = JsonConvert.SerializeObject(value);
+            Notifications.Publish(jsonValue);
+
             return this.userRepository.Add(value);
         }
 
@@ -118,6 +124,9 @@ namespace BetMania.Services.Controllers
                 {
                     throw new ArgumentException("Not user with such id");
                 }
+
+                string jsonValue = JsonConvert.SerializeObject(value);
+                Notifications.Publish(jsonValue);
 
                 this.userRepository.Update(value);
             }

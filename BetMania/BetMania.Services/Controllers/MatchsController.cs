@@ -1,6 +1,8 @@
 ﻿using BetMania.Models;
+using BetMania.Notifier;
 using BetMania.Repositories;
 using BetMania.Services.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,12 +70,18 @@ namespace BetMania.Services.Controllers
         // POST api/matchs
         public Match Post(Match value)
         {
+            string jsonValue = JsonConvert.SerializeObject(value);
+            Notifications.Publish(jsonValue);
+
             return this.matchReposit.Add(value);
         }
 
         // PUT api/matchs/5
         public Match Put(int id, Match value)
         {
+            string jsonValue = JsonConvert.SerializeObject(value);
+            Notifications.Publish(jsonValue);
+
             return this.matchReposit.Update(value);
         }
 
